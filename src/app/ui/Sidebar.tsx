@@ -1,7 +1,6 @@
+import { classNames } from '@/shared/lib/classNames';
 import { HiOutlineChartBar, HiOutlineUsers } from 'react-icons/hi';
 import { NavLink } from 'react-router-dom';
-
-import { classNames } from '../shared/lib/classNames';
 
 const links = [
     { to: '/', label: 'Dashboard', icon: HiOutlineChartBar },
