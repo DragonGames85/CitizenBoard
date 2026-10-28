@@ -1,5 +1,18 @@
 # CitizenBoard
 
+### Инструкция
+
+1. Нужен Node.js.
+
+2. Запустить 2 команды в cmd:
+
+```bash
+npm install
+npm run dev
+```
+
+3. После запуска Vite покажет адрес, обычно http://localhost:5173. По этой ссылке будет запущенное приложение.
+
 ### Выбор стека:
 
 - Vite (главный сборщик)
@@ -25,6 +38,39 @@
 
 Почему: легко масштабировать, поддерживать код и ориентироваться.
 
+```
+src/
+├── app/
+│   ├── providers/          AppLayout, AppProviders
+│   ├── router/
+│   ├── styles/
+│   ├── ui/                 Sidebar
+│   └── App.tsx
+├── pages/
+│   ├── dashboard/ui/
+│   ├── citizens/ui/
+│   └── citizen-details/ui/
+├── features/
+│   ├── filter-citizens/    ui, model
+│   ├── edit-citizen/       ui, model
+│   └── manage-family-members/  ui, model
+├── entities/
+│   └── citizen/
+│       ├── api/            данные и zustand-стор
+│       ├── model/          типы, статистика
+│       └── ui/
+└── shared/
+    ├── consts/
+    ├── lib/
+    └── ui/                 Button, Input, Select, Table и др.
+```
+
+`app` - главный слой приложения: роутер, стили, макет, сайдбар.
+`pages` — страницы.
+`features` — фильтры, форма редактирования гражданина и члены семьи.
+`entities/citizen` — модель и хранение сущностей.
+`shared` — общие helpers и компоненты.
+
 ### Коммиты:
 
 - initial commit (инициализация проекта)
@@ -48,3 +94,4 @@
 - FEAT (0.1.8): Добавлена страница деталей гражданина
   - Добавлена возможность обновить детали гражданина и члены семьи
 - FEAT (0.1.9): Обновлен dashboard: добавлена статистика с графиками
+- DOC (0.2.0): Добавлена инструкция по запуску приложения и обновлена структура
