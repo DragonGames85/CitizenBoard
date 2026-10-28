@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker/locale/ru';
 
-import { SEED_COUNT } from '@/shared/consts/citizen';
+import { CITIZEN_COUNT } from '@/shared/consts/citizen';
 import { toIsoDate } from '@/shared/lib/format';
 
 import type { Citizen, EmploymentStatus, FamilyMember, FamilyRelation, Gender, Nationality } from '../model/types';
@@ -29,7 +29,7 @@ function familyFor(lastName: string, index: number): FamilyMember[] {
     });
 }
 
-export function generateCitizens(count = SEED_COUNT): Citizen[] {
+export function generateCitizens(count = CITIZEN_COUNT): Citizen[] {
     const citizens: Citizen[] = [];
 
     for (let i = 0; i < count; i++) {

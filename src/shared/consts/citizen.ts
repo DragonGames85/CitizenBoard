@@ -1,1 +1,1 @@
-export const SEED_COUNT = 80000;
+export const CITIZEN_COUNT = 8000;

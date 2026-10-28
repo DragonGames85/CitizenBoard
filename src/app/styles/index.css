@@ -34,8 +34,23 @@ body,
 body {
     margin: 0;
     font-family: var(--font-sans);
-    color: var(--color-ink);
+    color: var(--color-main);
     background: var(--bg-color);
     background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #164e63 transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #164e63;
+    border-radius: 4px;
 }

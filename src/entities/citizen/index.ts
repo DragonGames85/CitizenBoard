@@ -1,5 +1,6 @@
 export { generateCitizens } from './api/data';
-
+export { useCitizenStore } from './api/storage';
+export { employmentLabel, genderLabel, nationalityLabel, relationLabel } from './model/labels';
 export type {
     Citizen,
     CitizenFilters,
@@ -9,3 +10,4 @@ export type {
     Gender,
     Nationality,
 } from './model/types';
+export { EmploymentBadge } from './ui/EmploymentBadge';
