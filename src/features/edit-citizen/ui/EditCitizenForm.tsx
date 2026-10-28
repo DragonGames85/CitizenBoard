@@ -1,9 +1,21 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 
-import { type Citizen, employmentLabel, genderLabel, nationalityLabel, useCitizenStore } from '@/entities/citizen';
+import {
+    type Citizen,
+    type Nationality,
+    SkillSelect,
+    applyDigitMask,
+    employmentLabel,
+    genderLabel,
+    nationalityLabel,
+    passportMask,
+    passportPlaceholder,
+    useCitizenStore,
+} from '@/entities/citizen';
 
 import { Button } from '@/shared/ui/Button';
+import { Checkbox } from '@/shared/ui/Checkbox';
 import { Input } from '@/shared/ui/Input';
 import { Panel } from '@/shared/ui/Panel';
 import { Select } from '@/shared/ui/Select';
@@ -23,9 +35,12 @@ function toForm(citizen: Citizen): CitizenFormValues {
         gender: citizen.gender,
         birthDate: citizen.birthDate,
         nationality: citizen.nationality,
+        passport: citizen.passport,
         employmentStatus: citizen.employmentStatus,
         phone: citizen.phone,
         email: citizen.email,
+        hasRegistration: citizen.hasRegistration,
+        skills: citizen.skills,
     };
 }
 
@@ -39,6 +54,9 @@ export function EditCitizenForm({ citizen, onSaved }: Props) {
         register,
         control,
         handleSubmit,
+        watch,
+        getValues,
+        setValue,
         formState: { errors, isSubmitting, isDirty },
         reset,
     } = useForm<CitizenFormValues>({
@@ -46,6 +64,18 @@ export function EditCitizenForm({ citizen, onSaved }: Props) {
         defaultValues: toForm(citizen),
         values: toForm(citizen),
     });
+
+    const nationality = watch('nationality');
+    const mask = passportMask[nationality];
+
+    const onNationality = (value: string) => {
+        const next = value as Nationality;
+        setValue('nationality', next, { shouldDirty: true, shouldValidate: true });
+        setValue('passport', applyDigitMask(getValues('passport'), passportMask[next]), {
+            shouldDirty: true,
+            shouldValidate: true,
+        });
+    };
 
     const onSubmit = handleSubmit(values => {
         const saved = updateCitizens(citizen.id, values);
@@ -88,7 +118,7 @@ export function EditCitizenForm({ citizen, onSaved }: Props) {
                             <Select
                                 label="Гражданство"
                                 value={field.value}
-                                onChange={field.onChange}
+                                onChange={onNationality}
                                 options={optionsOf(nationalityLabel)}
                                 error={errors.nationality?.message}
                             />
@@ -107,6 +137,24 @@ export function EditCitizenForm({ citizen, onSaved }: Props) {
                             />
                         )}
                     />
+                    <Controller
+                        name="passport"
+                        control={control}
+                        render={({ field }) => (
+                            <Input
+                                label="Серия и номер паспорта"
+                                inputMode="numeric"
+                                autoComplete="off"
+                                placeholder={passportPlaceholder(mask)}
+                                error={errors.passport?.message}
+                                value={field.value}
+                                onChange={event => field.onChange(applyDigitMask(event.target.value, mask))}
+                                onBlur={field.onBlur}
+                                name={field.name}
+                            />
+                        )}
+                    />
+                    <Checkbox label="Имеется прописка" {...register('hasRegistration')} />
                 </div>
             </Panel>
 
@@ -115,6 +163,16 @@ export function EditCitizenForm({ citizen, onSaved }: Props) {
                     <Input label="Телефон" error={errors.phone?.message} {...register('phone')} />
                     <Input label="Email" error={errors.email?.message} {...register('email')} />
                 </div>
+            </Panel>
+
+            <Panel title="Навыки">
+                <Controller
+                    name="skills"
+                    control={control}
+                    render={({ field }) => (
+                        <SkillSelect value={field.value} onChange={field.onChange} error={errors.skills?.message} />
+                    )}
+                />
             </Panel>
 
             <div className="flex flex-wrap gap-2">

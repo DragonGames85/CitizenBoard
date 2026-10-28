@@ -53,7 +53,8 @@ src/
 ├── features/
 │   ├── filter-citizens/    ui, model
 │   ├── edit-citizen/       ui, model
-│   └── manage-family-members/  ui, model
+│   ├── manage-family-members/  ui, model
+│   └── manage-documents/   ui, model
 ├── entities/
 │   └── citizen/
 │       ├── api/            данные и zustand-стор
@@ -96,3 +97,8 @@ src/
 - FEAT (0.1.9): Обновлен dashboard: добавлена статистика с графиками
 - DOC (0.2.0): Добавлена инструкция по запуску приложения и обновлена структура
 - FIX (0.2.1): Мелкие правки в html и labels
+- FEAT (0.2.2): Добавлены новые разнообразные поля в список граждан
+  - Навыки
+  - Паспорт
+  - Прописка
+  - Навыки

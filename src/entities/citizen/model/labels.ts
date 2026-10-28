@@ -1,4 +1,4 @@
-import type { EmploymentStatus, FamilyRelation, Gender, Nationality } from './types';
+import type { DocumentKind, EmploymentStatus, FamilyRelation, Gender, Nationality, SkillName } from './types';
 
 export const genderLabel: Record<Gender, string> = {
     male: 'Мужской',
@@ -17,6 +17,20 @@ export const employmentLabel: Record<EmploymentStatus, string> = {
     part_time: 'Подработка',
     retired: 'Пенсионер',
     self_employed: 'Самозанятый',
+};
+
+export const skillLabel: Record<SkillName, string> = {
+    driving: 'Вождение',
+    learning: 'Обучаемость',
+    programming: 'Программирование',
+    management: 'Менеджмент',
+    teamwork: 'Работа в команде',
+};
+
+export const documentKindLabel: Record<DocumentKind, string> = {
+    passport: 'Паспорт',
+    international: 'Загранпаспорт',
+    driver: 'Водительское удостоверение',
 };
 
 export const relationLabel: Record<FamilyRelation, string> = {

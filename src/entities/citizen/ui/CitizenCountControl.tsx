@@ -33,7 +33,7 @@ export function CitizenCountControl() {
                     onKeyDown={event => {
                         if (event.key === 'Enter') event.currentTarget.blur();
                     }}
-                    className="border-line bg-panel-2 text-main focus:border-neon text-smщ rounded-md border px-2 py-2"
+                    className="border-line bg-panel-2 text-main focus:border-neon rounded-md border px-2 py-2 text-sm"
                 />
             </label>
             <Button variant="ghost" onClick={resetCitizens}>
