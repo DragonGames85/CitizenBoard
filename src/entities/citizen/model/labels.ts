@@ -8,7 +8,7 @@ export const genderLabel: Record<Gender, string> = {
 export const nationalityLabel: Record<Nationality, string> = {
     ru: 'РФ',
     kz: 'Казахстан',
-    by: 'Белорусь',
+    by: 'Беларусь',
 };
 
 export const employmentLabel: Record<EmploymentStatus, string> = {
