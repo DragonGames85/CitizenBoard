@@ -66,7 +66,7 @@ export function Table<T extends RowData>({ data, columns, onRowClick }: Props<T>
                                 {row.getAllCells().map(cell => (
                                     <div
                                         key={cell.id}
-                                        className="text-ink flex shrink-0 items-center overflow-hidden px-3 text-sm"
+                                        className="text-main flex shrink-0 items-center overflow-hidden px-3 text-sm"
                                         style={{ width: cell.column.getSize() }}
                                     >
                                         <table.FlexRender cell={cell} />

@@ -10,5 +10,5 @@ export type {
     Gender,
     Nationality,
 } from './model/types';
-export { EmploymentBadge } from './ui/EmploymentBadge';
 export { CitizenCountControl } from './ui/CitizenCountControl';
+export { EmploymentBadge } from './ui/EmploymentBadge';

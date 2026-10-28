@@ -19,7 +19,7 @@ export function Button({ className, variant = 'primary', type = 'button', ...res
         <button
             type={type}
             className={classNames(
-                'inline-flex items-center justify-center gap-2 rounded-md border px-3 py-2 text-sm font-medium transition disabled:opacity-50',
+                'inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border px-3 py-2 text-sm font-medium transition disabled:opacity-50',
                 styles[variant],
                 className,
             )}
