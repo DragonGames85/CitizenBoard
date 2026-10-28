@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { QUOTA_STORAGE_LIMIT } from '@/shared/consts/localStorage';
 import { Button } from '@/shared/ui/Button';
 
 import { useCitizenStore } from '../api/storage';
@@ -39,11 +38,6 @@ export function CitizenCountControl() {
             <Button variant="ghost" onClick={resetCitizens}>
                 Сбросить
             </Button>
-            {citizenCount > QUOTA_STORAGE_LIMIT && (
-                <p className="text-secondary basis-full text-xs">
-                    Слишком много данных для localStorage (лимит - {QUOTA_STORAGE_LIMIT} )
-                </p>
-            )}
         </div>
     );
 }
