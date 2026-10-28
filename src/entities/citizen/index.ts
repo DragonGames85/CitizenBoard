@@ -11,3 +11,4 @@ export type {
     Nationality,
 } from './model/types';
 export { EmploymentBadge } from './ui/EmploymentBadge';
+export { CitizenCountControl } from './ui/CitizenCountControl';

@@ -1,3 +1,4 @@
+import { CitizenCountControl } from '@/entities/citizen';
 import { classNames } from '@/shared/lib/classNames';
 import { HiOutlineChartBar, HiOutlineUsers } from 'react-icons/hi';
 import { NavLink } from 'react-router-dom';
@@ -38,6 +39,9 @@ export function Sidebar() {
                 <p className="text-main text-xl font-medium">Citizen Board</p>
             </div>
             <AppNav className="flex-col p-3" />
+            <div className="mt-auto">
+                <CitizenCountControl />
+            </div>
         </aside>
     );
 }
